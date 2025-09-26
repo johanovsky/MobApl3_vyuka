@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kamen Nuzky Papir</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="manifest" href="manifest.json" />
+    <script src="app.js" defer></script>
+</head>
+<body>
+    <div>
+        <h1>Kámen Nůžky Papír</h1>
+        <h2>Hráč</h2>
+        <div>
+            <table id="player_table">
+                <tr><td>Kámen:</td><td><input type="radio" name="hrac" value="Kámen" checked /></td></tr>
+                <tr><td>Nůžky:</td><td><input type="radio" name="hrac" value="Nůžky" /></td></tr>
+                <tr><td>Papír:</td><td><input type="radio" name="hrac" value="Papír" /></td></tr>
+            </table>
+            <button onclick="hra()" id="play_btn">Hraj</button>
+        </div>
+        <h2>Počítač</h2>
+        <div id="cpu_div"></div>
+        <h2>Výsledek</h2>
+        <div id="result_div"></div>
+    </div>
+</body>
+</html>
