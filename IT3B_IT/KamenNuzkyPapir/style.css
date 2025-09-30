@@ -1,0 +1,39 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+body>div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+body>div>div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#play_btn {
+    width: 100px;
+    height: 75px;
+    border-radius: 10px;
+    margin: 5px;
+}
+
+#cpu_div, #result_div {
+    border: 1px solid black;
+    border-radius: 10px;
+    width: 200px;
+    height: 35px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
