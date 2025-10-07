@@ -25,5 +25,48 @@ function hraj() {
     //vypiseme volbu pocitace
     document.getElementById("cpu_div").innerText = cpu;
     
-    //TODO vyhodnoceni
+    //vyhodnoceni
+    switch(hrac) {
+        case "Kámen":
+            switch(cpu) {
+                case "Kámen":
+                    document.getElementById("result_div").innerText = "REMÍZA";
+                    break;
+                case "Nůžky":
+                    document.getElementById("result_div").innerText = "VÝHRA";
+                    break;
+                case "Papír":
+                    document.getElementById("result_div").innerText = "PROHRA";
+                    break;
+            }
+            break;
+        case "Nůžky":
+            switch(cpu) {
+                case "Kámen":
+                    document.getElementById("result_div").innerText = "PROHRA";
+                    break;
+                case "Nůžky":
+                    document.getElementById("result_div").innerText = "REMÍZA";
+                    break;
+                case "Papír":
+                    document.getElementById("result_div").innerText = "VÝHRA";
+                    break;
+            }
+            break;
+        case "Papír":
+            switch(cpu) {
+                case "Kámen":
+                    document.getElementById("result_div").innerText = "VÝHRA";
+                    break;
+                case "Nůžky":
+                    document.getElementById("result_div").innerText = "PROHRA";
+                    break;
+                case "Papír":
+                    document.getElementById("result_div").innerText = "REMÍZA";
+                    break;
+            }
+            break;
+    }
+
+
 }
