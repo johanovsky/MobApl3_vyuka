@@ -9,3 +9,24 @@ if ("serviceWorker" in navigator) {
             });
     });
 }
+
+//vyrobim konstantu s tim prepinacem
+const marineSwitch = document.getElementById("marine_check");
+//nastavime posluchac udalosti - zmena prepinace
+//zadana funkce se spusti, kdyz dojde ke zmene prepinace
+marineSwitch.addEventListener("change", onMarineSwitchChange);
+//vyrobime konstantu s obrazkem
+const marineImg = document.getElementById("marine_img");
+
+
+//metoda ktera se ma spustit, kdyz dojde ke zmene stavu prepinace
+function onMarineSwitchChange(event) {
+    //zjistime jaka zmena to byla
+    if(marineSwitch.checked) {
+        //nyni je zatrhnuty -> zmena byla z off do on
+        marineImg.src = "./Shooting.gif";
+    } else {
+        //nyni neni zatrhnuty -> zmena byla z on do off
+        marineImg.src = "./NotShooting.jpg";
+    }
+}
