@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="manifest" href="manifest.json" />
+    <script src="app.js" defer></script>
+</head>
+<body>
+    <div>
+        <h1>Kalkulačka</h1>
+        <input type="number" id="operand1" placeholder="první operand" />
+        <select id="operace">
+            <option value="add">Sčítání (+)</option>
+            <option value="subtract">Odčítání (-)</option>
+            <option value="multiply">Násobení (×)</option>
+            <option value="divide">Dělení (÷)</option>
+        </select>
+        <input type="number" id="operand2" placeholder="druhý operand" />
+        <button onclick="pocitej()">Vypočítat</button>
+        <div id="div_vysledek">
+            Výsledek
+        </div>
+    </div>
+</body>
+</html>
