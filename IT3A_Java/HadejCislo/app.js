@@ -13,6 +13,7 @@ if ("serviceWorker" in navigator) {
 //konstanty pro UI prvky
 const numberInput = document.getElementById("cislo");
 const resultDiv = document.getElementById("vysledek");
+const playBtn = document.getElementById("tlacitko");
 
 //promenne pro hru
 let secretNumber;
@@ -27,6 +28,10 @@ function reset() {
     console.log("Nove tajne cislo je: " + secretNumber);
     //nastavime uvodni text do vysledkoveho divu
     resultDiv.innerText = "Zadej svůj odhad";
+    //nastavime tlacitku puvodni text
+    playBtn.innerText = "Hádat";
+    //vycistime vstupni pole
+    numberInput.value = "";
 }
 
 //pri obnoveni aplikace
@@ -35,26 +40,38 @@ window.onload = function() {
 }
 
 function hadej() {
-    //stahneme si uzivateluv odhad
-    const odhad = parseInt(numberInput.value);
-    //kontrolni vypis
-    console.log("Uzivateluv odhad: " + odhad);
-    //kontrola vstupu
-    if(isNaN(odhad)) {
-        //uzivatel nezadal cislo
-        resultDiv.innerText = "Neplatne cislo\nZadej svůj odhad";
+    //kontrola jestli to je hra, nebo reset
+    if(playBtn.innerText === "Reset") {
+        //budeme resetovat
+        reset();
     } else {
-        //zvysime pocet pokusu
-        tryCount++;
-        //vyhodnoceni
-        if(odhad === secretNumber) {
-            //vyhra
-            resultDiv.innerHTML = "<p>Výborně, uhodl jsi tajné číslo: " + odhad + "</p>";
-            resultDiv.innerHTML += "<p>Potřeboval jsi: " + tryCount + " pokusů</p>";
+        //budeme hrat
+        //stahneme si uzivateluv odhad
+        const odhad = parseInt(numberInput.value);
+        //kontrolni vypis
+        console.log("Uzivateluv odhad: " + odhad);
+        //kontrola vstupu
+        if(isNaN(odhad)) {
+            //uzivatel nezadal cislo
+            resultDiv.innerText = "Neplatne cislo\nZadej svůj odhad";
         } else {
-            //netrefil se, jedeme dal
-            resultDiv.innerHTML = "<p>Tvůj odhad: " + odhad + " nebyl správný</p>";
-            resultDiv.innerHTML += "<p>Hledané číslo je " + ((odhad < secretNumber) ? "VYŠŠÍ" : "NIŽŠÍ") + "</p>";
+            //zvysime pocet pokusu
+            tryCount++;
+            //vyhodnoceni
+            if(odhad === secretNumber) {
+                //vyhra
+                resultDiv.innerHTML = "<p>Výborně, uhodl jsi tajné číslo: " + odhad + "</p>";
+                resultDiv.innerHTML += "<p>Potřeboval jsi: " + tryCount + " pokusů</p>";
+                //zmena textu tlacitka
+                playBtn.innerText = "Reset";
+            } else {
+                //netrefil se, jedeme dal
+                resultDiv.innerHTML = "<p>Tvůj odhad: " + odhad + " nebyl správný</p>";
+                resultDiv.innerHTML += "<p>Hledané číslo je " + ((odhad < secretNumber) ? "VYŠŠÍ" : "NIŽŠÍ") + "</p>";
+                //vycistime vstupni pole
+                numberInput.value = "";
+            }
         }
     }
+
 }
