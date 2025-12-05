@@ -23,6 +23,36 @@ function getTemp(city, div_id) {
         .then(response => response.json())
         .then(data => {
             //tady bude zpracovani dat
+            if(data.cod === 200) {
+                //prisla data a jsou ok -> je v nich pocasi
+                //stahneme data
+                const temp = data.main.temp;
+                const press = data.main.pressure;
+                const hum = data.main.humidity;
+                const icon = data.weather[0].icon;
+                //toto je v sec
+                const sunrise = data.sys.sunrise;
+                //toto chce mili-sec
+                const sunrise_date = new Date(sunrise * 1000);
+                const sunset = data.sys.sunset;
+                const sunset_date = new Date(sunset * 1000);
+
+                //slepime html do divu
+                div.innerHTML = "<h3>" + city + "</h3>";
+                div.innerHTML += "<p> <img src='https://openweathermap.org/img/wn/" + icon + ".png' /> </p>";
+                div.innerHTML += "<p>Teplota: " + temp + " °C</p>";
+                div.innerHTML += "<p>Tlak: " + press + " hPa</p>";
+                div.innerHTML += "<p>Vlhkost: " + hum + " %</p>";
+                div.innerHTML += "<p>Slunce vyjde v: " + 
+                    sunrise_date.getHours().toString().padStart(2, "0") + ":" + 
+                    sunrise_date.getMinutes().toString().padStart(2, "0") + "</p>";
+                div.innerHTML += "<p>Slunce zapadne v: " + 
+                    sunset_date.getHours().toString().padStart(2, "0") + ":" + 
+                    sunset_date.getMinutes().toString().padStart(2, "0") + "</p>";
+            } else {
+                //sice prisla data, ale je v nich nejaka chyba
+                div.innerHTML = "<p>Chyba: " + data.message + "</p>";
+            }
         })
         .catch(error => {
             //sem to spadne, napr. kdyz zarizeni nebude online
@@ -39,4 +69,8 @@ function getTemperature() {
     const city = document.getElementById("input_city").value;
     //vyplnime teplotu do zadaneho divu
     getTemp(city, "city");
+}
+
+window.onload = function() {
+    getTemp("Dobronín", "dobronin");
 }
