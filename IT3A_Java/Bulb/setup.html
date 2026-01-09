@@ -1,0 +1,31 @@
+<!-- 2. stranka aplikace -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RGB Bulb Setup</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="manifest" href="manifest.json" />
+    <script src="app_setup.js" defer></script>
+</head>
+<body>
+    <div>
+        <div id="wrap">
+            <h1>RGB Žárovka</h1>
+            <div id="color_choose">
+                <div>Červená:   <input type="radio" name="color" value="red"    /></div>
+                <div>Zelená:    <input type="radio" name="color" value="green"  /></div>
+                <div>Modrá:     <input type="radio" name="color" value="blue"   /></div>
+                <div>Žlutá:     <input type="radio" name="color" value="yellow" /></div>
+                <div>Purpurová: <input type="radio" name="color" value="magenta"/></div>
+                <div>Azurová:   <input type="radio" name="color" value="cyan"   /></div>
+            </div>
+        </div>
+        <div id="tabs">
+            <a href="index.html" class="tab">Bulb</a>
+            <a href="setup.html" class="tab active">Setup</a>
+        </div>
+    </div>
+</body>
+</html>
