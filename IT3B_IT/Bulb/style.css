@@ -31,8 +31,16 @@ body {
     width: 0px;
     height: 0px;
     border-radius: 50%;
-    background-image: radial-gradient(rgba(255, 0, 0, 1), rgba(255, 0, 0, 0));
     margin-bottom: 30%;      
+}
+
+#color_choose {
+    width: 200px;
+    height: 200px;
+}
+
+#color_choose div {
+    margin: 20px;
 }
 
 /* Nastylovani checkboxu jako prepinac */
