@@ -7,6 +7,7 @@ const cacheAssets = [
   "/setup.html",
   "/style.css",
   "/app_index.js",
+  "/app_setup.js",
   "/img/icon-192.png",
   "/img/icon-512.png",
   "/img/bulb.jpg"

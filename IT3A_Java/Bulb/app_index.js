@@ -25,7 +25,9 @@ function prepniSvetlo(event) {
         bulbLight.style.height = "130px";
         bulbLight.style.transition = "0.5s";
         //kontrolni vypis do konzole
-        console.log("switch on");       
+        console.log("switch on");
+        //ulozime stav zarovky do localStorage
+        localStorage.setItem("bulb", "on");       
     } else {
         //zmena byla z on->off
         bulbLight.style.width = "0px";
@@ -33,6 +35,8 @@ function prepniSvetlo(event) {
         bulbLight.style.transition = "0.5s";
         //kontrolni vypis do konzole
         console.log("switch off");
+        //ulozime stav zarovky do localStorage
+        localStorage.setItem("bulb", "off");
     }
 }
 
@@ -69,5 +73,26 @@ window.onload = function() {
         case "cyan":
             bulbLight.style.background = "radial-gradient(circle, rgba(0, 255, 255, 1), rgba(0, 0, 0, 0))";
             break;        
-    }         
+    }
+    
+    
+    //nacteme stav zarovky
+    let bulb = localStorage.getItem("bulb");
+    //kontrolni vypis
+    console.log("Nactena zarovka: " + bulb);
+    //kdyz nemas stav zarovky
+    if(bulb === null) {
+        //def. stav -> off
+        bulb = "off";
+        //uloz i do localStorage
+        localStorage.setItem("bulb", bulb);
+    }
+    //podle stavu zarovky rozsvit / zhasni zarovku
+    if(bulb === "on") {
+        bulbSwitch.checked = true;
+    } else {
+        bulbSwitch.checked = false;       
+    }
+    //rucne spustime funkci pro zmenu zarovky
+    prepniSvetlo();   
 }
