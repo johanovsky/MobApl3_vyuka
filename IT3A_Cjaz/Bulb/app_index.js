@@ -25,12 +25,17 @@ function prepniZarovku(event) {
         bulbLight.style.transition = "0.5s";
         //kontrolni do konzole
         console.log("switch on");
+        //zapiseme zaznam do localStorage
+        localStorage.setItem("bulb", "on");
     } else {
         //tady budeme zhasinat       
         bulbLight.style.width = "0px";
         bulbLight.style.height = "0px";
         bulbLight.style.transition = "0.5s";
+        //kontrolni vypis
         console.log("switch off");
+        //zapis do localStorage
+        localStorage.setItem("bulb", "off");
     }
 }
 
@@ -68,5 +73,26 @@ window.onload = function() {
             bulbLight.style.background = "radial-gradient(circle, rgba(0,255,255,1), rgba(0,0,0,0)";
             break;
     }
+
+    //nacteme stav zarovky
+    let bulb = localStorage.getItem("bulb");
+    //kontrolni vypis
+    console.log("Nacteny stav zarovky: " + bulb);
+    //co kdyz nenactu stav zarovky
+    if(bulb === null) {
+        //def. stav je off
+        bulb = "off";
+        //ulozime do localStorage
+        localStorage.setItem("bulb", bulb);
+    }
+
+    //podle stavu bulb zapneme / vypneme prepinac
+    if(bulb === "on") {
+        bulbSwitch.checked = true;
+    } else {
+        bulbSwitch.checked = false;
+    }
+    //"rucne" spustime udalostni metodu
+    prepniZarovku();
 
 }
