@@ -4,8 +4,10 @@ const CACHE_NAME = "v1";
 const cacheAssets = [
     "/",
     "/index.html",
+    "/setup.html",
     "/style.css",
     "/app_index.js",
+    "/app_setup.js",
     "/img/icon-192.png",
     "/img/icon-512.png",
     "/img/bulb.jpg"
@@ -37,8 +39,26 @@ self.addEventListener("activate", e => {
     );
 });
     
-self.addEventListener("fetch", e => {
-    e.respondWith(
-    fetch(e.request).catch(() => caches.match(e.request))
+self.addEventListener("fetch", event => {
+    event.respondWith(
+        caches.match(event.request).then(response => {
+            // Pokud je odpověď v cache, vrátíme ji
+            if (response) {
+                return response;
+            }
+            // Jinak se pokusíme načíst ji ze sítě
+            return fetch(event.request).then(networkResponse => {
+                // Klonování odpovědi kvůli přidání do cache
+                const responseClone = networkResponse.clone();
+                caches.open(CACHE_NAME).then(cache => {
+                    cache.put(event.request, responseClone);
+                });
+                return networkResponse;
+            });
+        }).catch(() => {
+            // Zobrazení náhradní stránky, pokud ani cache, ani síť nejsou dostupné
+            //return caches.match('/offline.html');
+            console.log("Offline and no cache");
+        })
     );
 });

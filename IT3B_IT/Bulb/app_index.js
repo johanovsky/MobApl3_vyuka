@@ -24,17 +24,19 @@ function prepniZarovku() {
         bulbLight.style.width = "130px";
         bulbLight.style.height = "130px";
         bulbLight.style.transition = "0.5s";
-
         //kontrolni vypis
         console.log("Switch on");
+        //ulozime stav zarovky do localStorage
+        localStorage.setItem("bulb", "on");
     } else {
         //budeme zhasinat
         bulbLight.style.width = "0px";
         bulbLight.style.height = "0px";
         bulbLight.style.transition = "0.5s";
-
         //kontrolni vypis
         console.log("Switch off");
+        //ulozime stav zarovky do localStorage
+        localStorage.setItem("bulb", "off");
     }
 }
 
@@ -71,5 +73,24 @@ window.onload = function() {
         case "cyan":
             bulbLight.style.background = "radial-gradient(circle, rgba(0, 255, 255, 1), rgba(0, 0, 0, 0))";
             break;   
-    }   
+    }
+    
+    //nacteme minuly stav zarovky
+    let bulb = localStorage.getItem("bulb");
+    //kontrolni vypis
+    console.log("Nacteny stav zarovky: " + bulb);
+    //co kdyz nemam minuly stav zarovky
+    if(bulb === null) {
+        //def. stav -> off
+        bulb = "off";
+        sessionStorage.setItem("bulb", bulb);
+    }
+    //podle stavu zarovky prepneme prepinac
+    if(bulb === "on") {
+        bulbSwitch.checked = true;
+    } else {
+        bulbSwitch.checked = false;
+    }
+    //rucne zavolame zmenu zarovky
+    prepniZarovku();
 }
