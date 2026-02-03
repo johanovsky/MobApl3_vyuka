@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cinkacka</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="manifest" href="manifest.json" />
+    <script src="app_index.js" defer ></script>
+</head>
+<body>
+    <div>
+        <div id="wrap">
+            <h1>Cinkacka</h1>
+            <div>Aktuální sázka: <span id="cur_bet">xxx</span> </div>
+            <div>
+                <input type="number" id="input_bet" />
+                <button onclick="change_bet()">Nastavit sazku</button>
+            </div>
+            <div id="slots">
+                <div class="slot">A</div>
+                <div class="slot">B</div>
+                <div class="slot">C</div>
+            </div>
+            <div>
+                <button onclick="play()">Točit</button>
+                <button onclick="autoPlay()">Autospin</button>
+            </div>
+            <div id="div_result">&nbsp;</div>
+        </div>
+        <div id="tabs">
+            <a href="account.html" class="tab">Účet</a>
+            <a href="index.html" class="tab active">Cinkačka</a>
+            <a href="setup.html" class="tab">Nastavení</a>
+        </div>
+    </div>
+</body>
+</html>
