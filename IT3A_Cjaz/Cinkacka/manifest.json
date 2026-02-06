@@ -1,0 +1,19 @@
+{
+    "name": "Cinkacka",
+    "short_name": "Cinkacka",
+    "description": "Jednoducha vyukova PWA - Cinkacka (v zadnem pripade to neni hazard)",
+    "start_url": "/index.html",
+    "display": "standalone",
+    "icons": [
+        {
+            "src": "img/icon-192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "img/icon-512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+}
