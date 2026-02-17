@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cinkacka - nastaveni</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="manifest" href="manifest.json" />
+    <script src="app_setup.js" defer ></script>
+</head>
+<body>
+    <div>
+        <div id="wrap">
+            <h1>Cinkacka</h1>
+            <h2>Nastaveni pravdepodobnosti</h2>
+            <div>
+                <p>Nastavte pravdepodobnosti v % pro jednotlive symboly</p>
+                <p>Celkem musi byt soucet 100%</p>
+            </div>
+            <div>
+                🍒 Třešně: 
+                <input type="number" id="input_che_prob" />
+            </div>
+            <div>
+                🍋 Citron: 
+                <input type="number" id="input_lem_prob" />
+            </div>
+            <div>
+                🍉 Meloun: 
+                <input type="number" id="input_mel_prob" />
+            </div>
+            <div>
+                <button onclick="save_setup()">Ulozit</button>
+            </div>
+        </div>
+        <div id="tabs">
+            <a href="account.html" class="tab">Účet</a>
+            <a href="index.html" class="tab">Cinkačka</a>
+            <a href="setup.html" class="tab active">Nastavení</a>
+        </div>
+    </div>
+</body>
+</html>

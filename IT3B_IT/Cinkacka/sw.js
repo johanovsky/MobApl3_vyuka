@@ -5,9 +5,11 @@ const cacheAssets = [
     "/",
     "/index.html",
     "/setup.html",
+    "/account.html",
     "/style.css",
     "/app_index.js",
     "/app_setup.js",
+    "/app_account.js",
     "/img/icon-192.png",
     "/img/icon-512.png"
 ];

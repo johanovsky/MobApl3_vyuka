@@ -45,7 +45,6 @@ window.onload = function() {
     cur_bet_span.innerText = cur_bet;
     cur_bet_input.value = cur_bet;  
     
-    
     //nacteme aktualni cash
     cash = localStorage.getItem("cash");
     //kontrola
@@ -59,6 +58,24 @@ window.onload = function() {
     cash = Number(cash);
     //kontrolni vypis
     console.log("Aktualni cash: " + cash);
+
+    //nacteme pravdepodobnosti ze session
+    symb_che_prob = parseInt(sessionStorage.getItem("prob_che"));
+    symb_lem_prob = parseInt(sessionStorage.getItem("prob_lem"));
+    symb_mel_prob = parseInt(sessionStorage.getItem("prob_mel"));
+    //kontrola
+    if((isNaN(symb_che_prob)) || (isNaN(symb_lem_prob)) || (isNaN(symb_mel_prob))) {
+        //nejmene jedna pravdepodobnost chybi ->default 33/34/33
+        symb_che_prob = 33;
+        symb_lem_prob = 34;
+        symb_mel_prob = 33;
+        //ulozim do session
+        sessionStorage.setItem("prob_che", symb_che_prob);
+        sessionStorage.setItem("prob_lem", symb_lem_prob);
+        sessionStorage.setItem("prob_mel", symb_mel_prob);
+    }
+    //mam pravdepodonosti -> kontrolni vypis
+    console.log("Nactene pravdepodobnosti: che: " + symb_che_prob + " / lem: " + symb_lem_prob + " / mel : " + symb_mel_prob);
 }
 
 //funkce pro zmenu sazky
@@ -116,10 +133,10 @@ async function play() {
                 if(rnd < symb_lem_prob) {
                     //win + . vyvola nabidku emoji
                     //je to citron
-                    symbols[i] = "🍋";
+                    symbols[i] = "🍒";
                 } else if(rnd < (symb_lem_prob + symb_che_prob)) {
                     //jsou to tresne
-                    symbols[i] = "🍒";
+                    symbols[i] = "🍋";
                 } else {
                     //musi to byt meloun
                     symbols[i] = "🍉";
