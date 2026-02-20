@@ -42,6 +42,33 @@ window.onload = function() {
     console.log("Nactena akt. sazka: " + cur_bet);
     cur_bet_span.innerText = cur_bet;
     cur_bet_input.value = cur_bet;
+
+    //nacteni cash z localStorage
+    cash = localStorage.getItem("cash");
+    //kontrola
+    if(cash === null) {
+        //nemam cash -> default = 1000
+        cash = 1000;
+        //default ulozime do localStorage
+        localStorage.setItem("cash", cash);
+    }
+    //kontrolni vypis
+    console.log("Nacteny cash: " + cash);
+
+    //nacteni pravdepodobnosti
+    symb_che_prob = parseInt(sessionStorage.getItem("che_prob"));
+    symb_lem_prob = parseInt(sessionStorage.getItem("lem_prob"));
+    symb_mel_prob = parseInt(sessionStorage.getItem("mel_prob"));
+    //kontrola
+    if((isNaN(symb_che_prob)) || (isNaN(symb_lem_prob)) || (isNaN(symb_mel_prob))) {
+        //alespon jednu nemam -> default 33/34/33
+        symb_che_prob = 33;
+        symb_lem_prob = 34;
+        symb_mel_prob = 33;
+    }
+    //kontrolni vypis
+    console.log("Nactene pravdepodobnosti: che: " + symb_che_prob + " lem: " + 
+        symb_lem_prob + " mel: " + symb_mel_prob);
 }
 
 //fukce pro nastaveni nove sazky
@@ -134,6 +161,8 @@ async function play() {
             //odectu penize
             cash = Number(cash) - Number(cur_bet);
         }
+        //aktualizujeme cash v localStorage
+        localStorage.setItem("cash", cash);
         //do vysledneho divu vypisu zustatek
         result_div.innerText += " - aktualni zůstatek: " + cash;
     } else {
