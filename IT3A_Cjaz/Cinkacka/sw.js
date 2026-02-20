@@ -4,8 +4,12 @@ const CACHE_NAME = "v1";
 const cacheAssets = [
     "/",
     "/index.html",
+    "/account.html",
+    "/setup.html",
     "/style.css",
     "/app_index.js",
+    "/app_account.js",
+    "/app_setup.js",
     "/img/icon-192.png",
     "/img/icon-512.png"
 ];

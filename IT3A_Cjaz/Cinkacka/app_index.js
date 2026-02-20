@@ -57,6 +57,25 @@ window.onload = function() {
     }
     //kontrolni vypis
     console.log("Nacteny cash: " + cash);
+
+    //nacteni pravdepodobnosti
+    che_prob = parseInt(sessionStorage.getItem("che_prob"));
+    lem_prob = parseInt(sessionStorage.getItem("lem_prob"));
+    mel_prob = parseInt(sessionStorage.getItem("mel_prob"));
+    //kontrola pozor parseInt(null) == NaN
+    if((isNaN(che_prob)) || (isNaN(lem_prob)) || (isNaN(mel_prob))) {
+        //alespon jedna chybi -> default 33/34/33
+        che_prob = 33;
+        lem_prob = 34;
+        mel_prob = 33;
+        //ulozime default do session
+        sessionStorage.setItem("che_prob", che_prob);
+        sessionStorage.setItem("lem_prob", lem_prob);
+        sessionStorage.setItem("mel_prob", mel_prob);
+    }
+    //kontrolni vypis
+    console.log("Nactene pravdepodobnosti: che: " + che_prob + " lem: " + lem_prob + 
+        " mel: " + mel_prob);
 }
 
 //funkce pro zmenu akt. sazky

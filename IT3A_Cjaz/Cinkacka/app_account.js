@@ -15,3 +15,10 @@ window.onload = function() {
     //vypiseme cash do spanu
     document.getElementById("cur_cash_span").innerText = cash;
 }
+
+function resetCash() {
+    localStorage.setItem("cash", 1000);
+    console.log("Cash resetovan na 1000");
+    document.getElementById("cur_cash_span").innerText = localStorage.getItem("cash");
+    alert("Cash resetovan na 1000");   
+}
