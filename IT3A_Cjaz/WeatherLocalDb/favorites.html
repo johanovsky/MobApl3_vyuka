@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpenWeatherMap API/</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="manifest" href="manifest.json" />
+    <!--Nejprve pridame db.js aby se ostatni scripty dostaly k jeho funkcim -->
+    <script src="db.js" defer></script>
+    <script src="app_favorites.js" defer></script>
+</head>
+<body>
+    <div>
+        <div id="wrap">
+            <h1>Oblíbená města</h1>
+            <div id="favorites"></div>
+        </div>
+        <div id="tabs">
+            <a href="index.html" class="tab">Počasí</a>
+            <a href="favorites.html" class="tab active">Oblíbené</a>
+        </div>
+    </div>
+</body>
+</html>
