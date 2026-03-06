@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpenWeatherMap</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="manifest" href="manifest.json" />
+    <!-- Nejprve pripojime db.js, abychom ho mohli pouzivat v app.js -->
+    <script src="db.js" defer></script>
+    <script src="app.js" defer></script>
+</head>
+<body>
+    <div>
+        <div id="wrap">
+            <h1>Aktuální počasí</h1>
+            <div id="dobronin">
+                <h3>Dobronín:</h3>
+            </div>
+            <div id="city">
+                &nbsp;
+            </div>
+            <hr />
+            <input type="text" id="input_city" placeholder="Zadej město" />
+            <button onclick="getTemperature()">Zjisti počasí</button>
+            <button onclick="addToFavorites()">Přidej do oblíbených</button>
+        </div>
+        <div id="tabs">
+            <a href="index.html" class="tab active">Počasí</a>
+            <a href="favorites.html" class="tab">Oblíbené</a>
+        </div>
+    </div>
+</body>
+</html>
