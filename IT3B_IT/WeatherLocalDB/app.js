@@ -151,8 +151,19 @@ function getCityTemp() {
 window.onload = async function() {
     //pripravime DB
     await initDB();
-    //zobrazim def. mesto
-    getTemp("Dobronín", "dobronin");
+
+    //pokusime se nacist data z URL
+    const paramsFromUrl = new URLSearchParams(window.location.search);
+    //z nactenych dat nas zajima jen jeden parametr a to je mesto
+    const cityFromUrl = paramsFromUrl.get("city");
+    //jestlize mam mesto z parametru
+    if(cityFromUrl !== null) {
+        //mam mesto, zobrazim ho
+        getTemp(cityFromUrl, "dobronin");
+    } else {
+        //nemam mesto, zobrazim def.
+        getTemp("Dobronín", "dobronin");
+    }
 }
 
 function addCityToFavorites() {
