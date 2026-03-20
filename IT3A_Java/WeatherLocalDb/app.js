@@ -171,6 +171,17 @@ window.onload = async function() {
     //priprava DB
     await initDB();
 
-    //zobrazeni def. mesta
-    getTemp("Dobronín", "dobronin");
+    //zkusime nacist dat z URL
+    const paramsFromUrl = new URLSearchParams(window.location.search);
+    //z nactenych dat me zajima jen mesto
+    const favCity = paramsFromUrl.get("city");
+    //jestlize mam oblibene mesto
+    if(favCity !== null) {
+        //ano mam, zobrazim oblibene mesto
+        getTemp(favCity, "dobronin");    
+    } else {
+        //nemam, zobrazim defaut
+        getTemp("Dobronín", "dobronin");
+    }
+    
 }

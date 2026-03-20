@@ -104,6 +104,6 @@ self.addEventListener("fetch", event => {
     
     // ostatní soubory
     event.respondWith(
-    caches.match(event.request).then(c => c || fetch(event.request))
+        caches.match(event.request).then(c => c || fetch(event.request))
     );
 });
