@@ -192,6 +192,16 @@ window.onload = async function() {
     //init DB
     await initDB();
 
-    //zobrazeni def. vesnice
-    getTemp("Dobronín", "dobronin");
+    //nacteme data z URL
+    const dataFromUrl = new URLSearchParams(window.location.search);
+    //z dat vytahnu city
+    const favCity = dataFromUrl.get("city");
+    //jestlize mesto mam
+    if(favCity !== null) {
+        //mam obl. mesto, zobrazim ho
+        getTemp(favCity, "dobronin");
+    } else {
+        //nemam mesto, zobrazim default
+        getTemp("Dobronín", "dobronin");
+    }
 }
