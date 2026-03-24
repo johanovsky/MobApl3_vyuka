@@ -31,14 +31,14 @@ hr {
     width: 100%;
 }
 
-input[type="text"], button {
+input[type="text"], .bigButton {
     border-radius: 10px;
     width: 90%;
     padding: 10px;
     margin: 10px 0;
 }
 
-button {
+.bigButton {
     width: 100%;
 }
 

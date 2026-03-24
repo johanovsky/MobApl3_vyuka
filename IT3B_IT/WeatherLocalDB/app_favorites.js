@@ -17,13 +17,28 @@ window.onload = async function() {
         let seznam = "";
         //for-cyklus
         for(let i = 0; i < favorites.length; i++) {
+            //vytahnu ze zaznamu id
+            const id = favorites[i].id;
             //vytahnu ze zaznamu mesto
             const city = favorites[i].city;
-            //aktualni mesto vypiseme
-            seznam += "<p> <a href='index.html?city=" + city + "'>" + city + "</a></p>\n";
+            //aktualni mesto vypiseme jako link
+            seznam += "<p> <a href='index.html?city=" + city + "'>" + city + "</a>";
+            seznam += " <button onclick='removeCity(" + id + ")'>smazat</button> </p>\n";
+
         }
         //vlozime "slepene" html do divu
         divFav.innerHTML = seznam;
     }
+}
 
+//funkce pro smazani zaznamu z DB
+async function removeCity(id) {
+    try {
+        //zavola funkci z db.js
+        await deleteFavorite(id);
+        //reload stranky
+        location.reload();
+    } catch (error) {
+        console.log("Chyba pri mazani: " + error);       
+    }
 }
