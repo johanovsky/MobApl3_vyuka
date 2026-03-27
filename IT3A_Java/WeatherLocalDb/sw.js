@@ -1,11 +1,14 @@
 //pro práci offline a ukládání do cache
     
-const CACHE_NAME = "v2";
+const CACHE_NAME = "v3";
 const cacheAssets = [
     '/',
     '/index.html',
+    '/favorites.html',
     '/style.css',
     '/app.js',
+    '/app_favorites.js',
+    '/db.js',
     '/icon-192.png',
     '/icon-512.png'
 ];
@@ -104,6 +107,24 @@ self.addEventListener("fetch", event => {
     
     // ostatní soubory
     event.respondWith(
-        caches.match(event.request).then(c => c || fetch(event.request))
+        caches.match(event.request).then(response => {
+            // Pokud je odpověď v cache, vrátíme ji
+            if (response) {
+                return response;
+            }
+            // Jinak se pokusíme načíst ji ze sítě
+            return fetch(event.request).then(networkResponse => {
+                // Klonování odpovědi kvůli přidání do cache
+                const responseClone = networkResponse.clone();
+                caches.open(CACHE_NAME).then(cache => {
+                    cache.put(event.request, responseClone);
+                });
+                return networkResponse;
+            });
+        }).catch(() => {
+            // Zobrazení náhradní stránky, pokud ani cache, ani síť nejsou dostupné
+            //return caches.match('/offline.html');
+            console.log("Offline and no cache");
+        })
     );
 });

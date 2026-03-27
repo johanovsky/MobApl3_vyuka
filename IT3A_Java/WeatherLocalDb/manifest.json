@@ -1,7 +1,7 @@
 {
-    "name": "OpenWeatherMap Pocasi",
-    "short_name": "Pocasi",
-    "description": "Jednoducha PWA - OpenWeatherMap Pocasi",
+    "name": "OpenWeatherMap Pocasi 2",
+    "short_name": "Pocasi 2",
+    "description": "Jednoducha PWA - OpenWeatherMap Pocasi with Indexed DB",
     "start_url": "/index.html",
     "display": "standalone",
     "icons": [

@@ -21,8 +21,13 @@ window.onload = async function () {
             //projdeme kolekci a prepiseme do ni mesta
             //for-cyklus
             for(let i = 0; i < favorites.length; i++) {
-                const city = favorites[i].city;
-                seznamMest += "<p> <a href='index.html?city=" + city + "'>" + city + "</a></p>\n";
+                //stahnu si jmeno mesta
+                const city = favorites[i].city;7
+                //a id mesta do extra konstant
+                const id = favorites[i].id;
+                //vypisuju do HTML
+                seznamMest += "<p> <a href='index.html?city=" + city + "'>" + city + "</a>";
+                seznamMest += " <button onclick='removeCity(" + id + ")'>smazat</button> </p>\n";
             }
             //foreach
             /*
@@ -36,5 +41,16 @@ window.onload = async function () {
     } catch(error) {
         console.log("Nezdarilo se nacteni obl. mest");
     }
+}
 
+//mdtoda ktera zaridi smazani zaznamu z db a refresh stranky
+async function removeCity(id) {
+    try {
+        //smazeme zaznam z DB
+        await deleteFavorite(id);
+        //refresh stranky
+        location.reload();
+    } catch(error) {
+        console.log("Chyba pri mazani zaznamu: " + error);
+    }
 }
