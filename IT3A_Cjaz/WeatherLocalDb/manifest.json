@@ -1,7 +1,7 @@
 {
-    "name": "PWA OpenWeatherMap",
-    "short_name": "Weather",
-    "description": "Jednoducha PWA OpenWeatherMap ",
+    "name": "PWA OpenWeatherMap 2",
+    "short_name": "Weather 2",
+    "description": "Jednoducha PWA OpenWeatherMap with IndexedDB",
     "start_url": "/index.html",
     "display": "standalone",
     "icons": [

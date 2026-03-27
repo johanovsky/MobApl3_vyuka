@@ -20,9 +20,23 @@ window.onload = async function() {
         //for-cyklus
         for(let i = 0; i < favCities.length; i++) {
             const city = favCities[i].city;
-            seznamMest += "<p> <a href='index.html?city=" + city +"'>" + city + "</a></p>\n";
+            const id = favCities[i].id;
+            seznamMest += "<p> <a href='index.html?city=" + city +"'>" + city + "</a>";
+            seznamMest += " <button onclick='removeCity(" + id + ")'>smazat</button> </p>\n";
         }
         //mam slepeny string, vlozim ho do divu
         cityDiv.innerHTML = seznamMest;
+    }
+}
+
+//funkce pro smazani zaznamu a refresh stranky
+async function removeCity(id) {
+    try {
+        //smazeme mesto z DB
+        await deleteFavorite(id);
+        //refresh stranky
+        location.reload();
+    } catch(error) {
+        console.log("Chyba pri mazani zaznamu: " + error);
     }
 }

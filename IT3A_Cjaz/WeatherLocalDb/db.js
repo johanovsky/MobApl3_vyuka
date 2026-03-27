@@ -47,8 +47,21 @@ function getAllFavorites() {
     request.onerror = (event) => reject(event.target.error);
   });
 }
+
+function deleteFavorite(id) {
+  return new Promise((resolve, reject) => {
+      const tx = db.transaction(STORE_NAME, "readwrite");
+      const store = tx.objectStore(STORE_NAME);
+
+      const request = store.delete(id);
+
+      request.onsuccess = () => resolve(true);
+      request.onerror = (event) => reject(event.target.error);
+  });
+}
  
 // vystavíme funkce globálně, aby byly dostupné v main.js
 window.initDB = initDB;
 window.addFavorite = addFavorite;
 window.getAllFavorites = getAllFavorites;
+window.deleteFavorite = deleteFavorite;
