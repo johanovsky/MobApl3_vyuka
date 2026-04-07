@@ -5,6 +5,10 @@ window.onload = async function() {
 
     //nacteni mest do kolekce
     const favorites = await getAllFavorites();
+
+    //razeni v JS
+    //favorites.sort((a, b) => a.city.localeCompare(b.city));
+
     //najdeme div pro vypis
     const divFav = document.getElementById("favorites");
 

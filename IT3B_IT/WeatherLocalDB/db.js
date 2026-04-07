@@ -12,6 +12,7 @@ function initDB() {
       const database = event.target.result;
       if(!database.objectStoreNames.contains(STORE_NAME)) {
         const store = database.createObjectStore(STORE_NAME, { keyPath: "id", autoIncrement: true });
+        //sloupec podle ktereho chceme radit musi byt index
         store.createIndex("city", "city", { unique: true });
       }
     };
@@ -42,7 +43,12 @@ function getAllFavorites() {
   return new Promise((resolve, reject) => {
     const tx = db.transaction(STORE_NAME, "readonly");
     const store = tx.objectStore(STORE_NAME);
-    const request = store.getAll();
+
+    //razeni v indexedDB
+    const sorted = store.index("city"); //serazeni podle hodnoty city
+    const request = sorted.getAll();  //vytazeni serazenych dat
+
+    //const request = store.getAll(); //neserazena data
     request.onsuccess = () => resolve(request.result);
     request.onerror = (event) => reject(event.target.error);
   });
