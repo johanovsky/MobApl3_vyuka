@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poznamky - novy</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="manifest" href="manifest.json" />
+    <!-- Nejprve pripojime DB -->
+    <script src="db.js" defer></script>
+    <!-- Potom teprve hlavni JS -->
+    <script src="app_new.js" defer></script>
+</head>
+<body>
+    <div id="wrap">
+        <h1>Nová poznámka</h1>
+        <!-- pole pro zadani poznamky -->
+        <fieldset>
+            <legend>Název*</legend>
+            <input type="text" placeholder="Zadej název poznámky" id="note_name" required/>
+        </fieldset>
+        <fieldset>
+            <legend>Text</legend>
+            <textarea placeholder="Zadej text poznámky" id="note_text" rows="5"></textarea>
+        </fieldset>
+        <fieldset>
+            <legend>Tag</legend>
+            <input type="text" placeholder="Zadej značku poznámky" id="note_tag"/>
+        </fieldset>
+
+        <!-- odkaz na stranku pro vytvoreni nove poznamky -->
+        <a class="button_link" onclick="add_note()">Uložit poznámku</a>
+        <a class="button_link" href="index.html">Zpět na přehled</a>
+    </div>  
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poznamky</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="manifest" href="manifest.json" />
+    <!-- Nejprve pripojime DB -->
+    <script src="db.js" defer></script>
+    <!-- Potom teprve hlavni JS -->
+    <script src="app.js" defer></script>
+</head>
+<body>
+    <div id="wrap">
+        <h1>Poznámky</h1>
+        <!-- div pro vypis vsech poznamek -->
+        <div id="notes_list">
+            tady bude seznam poznámek
+        </div>
+        <!-- odkaz na stranku pro vytvoreni nove poznamky -->
+        <a class="button_link" href="new.html">Nová poznámka</a>
+    </div>  
+</body>
+</html>
