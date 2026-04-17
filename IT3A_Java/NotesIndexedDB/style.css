@@ -1,0 +1,40 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    border: 1px solid black;
+    border-radius: 10px;
+
+    padding: 10px;
+}
+
+.button_link {
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: silver;
+    color: black;
+    text-decoration: none;
+    margin-top: 10px;
+}
+
+fieldset {
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+#note_name, #note_text, #note_tag {
+    padding: 10px;
+    /*sjednoceni fontu a volikosti*/
+    font-family: inherit;
+    font-size: 1rem;
+    /*sjednoceni sirky inputu a textarea*/
+    width: 200px;
+}

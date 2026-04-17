@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notes - new</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="manifest" href="manifest.json" />
+    <!-- Nejprve pripojime db.js, abychom ho mohli pouzivat v app.js -->
+    <script src="db.js" defer></script>
+    <script src="app_new.js" defer></script>
+</head>
+<body>
+    <div id="wrap">
+        <h1>Nová poznámka</h1>
+        <fieldset>
+            <legend>Název</legend>
+            <input type="text" placeholder="Zadej jméno poznámky" id="note_name" required />
+        </fieldset>
+        <fieldset>
+            <legend>Text</legend>
+            <textarea id="note_text" placeholder="Zadej text poznámky" rows="5"></textarea>
+        </fieldset>
+        <fieldset>
+            <legend>Tag</legend>
+            <input type="text" placeholder="Zadej tag poznámky" id="note_tag" />
+        </fieldset>
+        <a onclick="add_note()" class="button_link">Uložit poznámku</a>
+        <a href="index.html" class="button_link">Zpět na přehled</a>
+    </div>
+</body>
+</html>
