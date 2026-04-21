@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poznamky - detail</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="manifest" href="manifest.json" />
+    <!-- Nejprve pripojime DB -->
+    <script src="db.js" defer></script>
+    <!-- Potom teprve hlavni JS -->
+    <script src="app_detail.js" defer></script>
+</head>
+<body>
+    <div id="wrap">
+        <h1>Detail poznámky</h1>
+        <!-- pole pro vypis poznamky -->
+        <fieldset>
+            <legend>ID</legend>
+            <div id="note_id"></div>
+        </fieldset>
+        <fieldset>
+            <legend>Název</legend>
+            <div id="note_name"></div>
+        </fieldset>
+        <fieldset>
+            <legend>Text</legend>
+            <div id="note_text"></div>
+        </fieldset>
+        <fieldset>
+            <legend>Tag</legend>
+            <div id="note_tag"></div>
+        </fieldset>
+
+        <!-- odkaz na stranku pro vytvoreni nove poznamky -->
+        <a class="button_link" onclick="delete_note()">Smazat poznámku</a>
+        <a class="button_link" href="index.html">Zpět na přehled</a>
+    </div>  
+</body>
+</html>

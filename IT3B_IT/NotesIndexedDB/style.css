@@ -34,7 +34,7 @@ fieldset {
     margin-top: 10px;
 }
 
-#note_name, #note_text, #note_tag {
+#note_name, #note_text, #note_tag, #note_id {
     padding: 10px;
 
     /* sjednotime font a velikost fontu */
