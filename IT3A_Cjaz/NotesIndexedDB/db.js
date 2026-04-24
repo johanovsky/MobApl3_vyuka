@@ -61,9 +61,7 @@ function addNote(name, text, tag) {
   });
 }
 
-/* odsud uz neupraveno */
-
-function getAllFavorites() {
+function getAllNotes() {
   return new Promise((resolve, reject) => {
     const tx = db.transaction(STORE_NAME, "readonly");
     const store = tx.objectStore(STORE_NAME);
@@ -73,7 +71,19 @@ function getAllFavorites() {
   });
 }
 
-function deleteFavorite(id) {
+function getNoteById(id) {
+  return new Promise((resolve, reject) => {
+    const tx = db.transaction(STORE_NAME, "readonly");
+    const store = tx.objectStore(STORE_NAME);
+
+    const request = store.get(id);
+
+    request.onsuccess = () => resolve(request.result);
+    request.onerror = (event) => reject(event.target.error);
+  });
+}
+
+function deleteNote(id) {
   return new Promise((resolve, reject) => {
       const tx = db.transaction(STORE_NAME, "readwrite");
       const store = tx.objectStore(STORE_NAME);
@@ -88,5 +98,6 @@ function deleteFavorite(id) {
 // vystavíme funkce globálně, aby byly dostupné v main.js
 window.initDB = initDB;
 window.addNote = addNote;
-window.getAllFavorites = getAllFavorites;
-window.deleteFavorite = deleteFavorite;
+window.getAllNotes = getAllNotes;
+window.getNoteById = getNoteById;
+window.deleteNote = deleteNote;

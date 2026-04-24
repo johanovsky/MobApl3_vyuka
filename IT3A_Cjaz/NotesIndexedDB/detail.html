@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notes - detail</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="manifest" href="manifest.json" />
+    <!--Nejprve pridame db.js aby se ostatni scripty dostaly k jeho funkcim -->
+    <script src="db.js" defer></script>
+    <script src="app_detail.js" defer></script>
+</head>
+<body>
+    <div id="wrap">
+        <h1>Detail poznámky</h1>
+        <fieldset>
+            <legend>Id</legend>
+            <div id="note_id"></div>
+        </fieldset>
+        <fieldset>
+            <legend>Název</legend>
+            <div id="note_name"></div>
+        </fieldset>
+        <fieldset>
+            <legend>Text</legend>
+            <div id="note_text"></div>
+        </fieldset>
+        <fieldset>
+            <legend>Tag</legend>
+            <div id="note_tag"></div>
+        </fieldset>
+        <a onclick="delete_note()" class="button_link">Smazat poznámku</a>
+        <a href="index.html" class="button_link">Zpět na přehled</a>
+    </div>
+</body>
+</html>

@@ -9,6 +9,12 @@ async function add_note() {
     const text = document.getElementById("note_text").value;
     const tag = document.getElementById("note_tag").value;
 
-    //zavolame funkci z db.js ktera prida zaznam do DB
-    await addNote(name, text, tag);
+    //zavolame funkci z db.js ktera prida zaznam do DB a ulozime jeji vysledek
+    const result = await addNote(name, text, tag);
+
+    if(result === true) {
+        //pridani se povedlo
+        alert("Poznamka ulozena");
+        window.location.href = "index.html";
+    }
 }

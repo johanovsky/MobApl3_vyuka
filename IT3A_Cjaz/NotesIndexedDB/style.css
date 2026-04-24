@@ -32,7 +32,7 @@ fieldset {
     margin-top: 10px;
 }
 
-#note_name, #note_text, #note_tag {
+#note_name, #note_text, #note_tag, #note_id {
     font-family: inherit;
     font-size: 1rem;
 

@@ -1,0 +1,65 @@
+//pro práci offline a ukládání do cache
+    
+const CACHE_NAME = "v3";
+const cacheAssets = [
+    '/',
+    '/index.html',
+    '/new.html',
+    '/detail.html',
+    '/style.css',
+    '/app.js',
+    '/app_new.js',
+    '/app_detail.js',
+    '/db.js',
+    '/icon-192.png',
+    '/icon-512.png'
+];
+    
+self.addEventListener("install", event => {
+    event.waitUntil(
+    caches.open(CACHE_NAME).then(cache => {
+        return cache.addAll(cacheAssets);
+    })
+    );
+});
+    
+self.addEventListener("activate", event => {
+    const cacheWhitelist = [CACHE_NAME];
+    event.waitUntil(
+    caches.keys().then(cacheNames => {
+        return Promise.all(
+        cacheNames.map(cacheName => {
+            if (cacheWhitelist.indexOf(cacheName) === -1) {
+            return caches.delete(cacheName);
+            }
+        })
+        );
+    })
+    );
+});
+        
+self.addEventListener("fetch", event => {
+    // ostatní soubory
+    event.respondWith(
+        //cacheujeme pouze podle URL a ignorujeme parametry URL
+        caches.match(event.request, {ignoreSearch: true}).then(response => {
+            // Pokud je odpověď v cache, vrátíme ji
+            if (response) {
+                return response;
+            }
+            // Jinak se pokusíme načíst ji ze sítě
+            return fetch(event.request).then(networkResponse => {
+                // Klonování odpovědi kvůli přidání do cache
+                const responseClone = networkResponse.clone();
+                caches.open(CACHE_NAME).then(cache => {
+                    cache.put(event.request, responseClone);
+                });
+                return networkResponse;
+            });
+        }).catch(() => {
+            // Zobrazení náhradní stránky, pokud ani cache, ani síť nejsou dostupné
+            //return caches.match('/offline.html');
+            console.log("Offline and no cache");
+        })
+    );
+});
