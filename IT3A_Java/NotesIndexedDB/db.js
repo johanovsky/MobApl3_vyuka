@@ -72,9 +72,19 @@ function getAllNotes() {
   });
 }
 
-/* az podsud upraveno */
+function getNoteById(id) {
+  return new Promise((resolve, reject) => {
+    const tx = db.transaction(STORE_NAME, "readonly");
+    const store = tx.objectStore(STORE_NAME);
 
-function deleteFavorite(id) {
+    const request = store.get(id);
+
+    request.onsuccess = () => resolve(request.result);
+    request.onerror = (event) => reject(event.target.error);
+  });
+}
+
+function deleteNote(id) {
   return new Promise((resolve, reject) => {
       const tx = db.transaction(STORE_NAME, "readwrite");
       const store = tx.objectStore(STORE_NAME);
@@ -90,4 +100,5 @@ function deleteFavorite(id) {
 window.initDB = initDB;
 window.addNote = addNote;
 window.getAllNotes = getAllNotes;
-window.deleteFavorite = deleteFavorite;
+window.getNoteById = getNoteById;
+window.deleteNote = deleteNote;

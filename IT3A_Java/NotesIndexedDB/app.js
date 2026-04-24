@@ -36,7 +36,8 @@ window.onload = async function() {
     //nasypeme do seznamu jmena poznamek
     for(let i = 0; i < notes.length; i++) {
         const note_name = notes[i].name;
-        seznamPoznamek += "<li>" + note_name + "</li>";       
+        const note_id = notes[i].id;
+        seznamPoznamek += "<li><a href='detail.html?id=" + note_id + "'>" + note_name + "</a></li>";       
     }
 
     //uzavreme seznam
